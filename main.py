@@ -1,12 +1,14 @@
 from dotenv import load_dotenv
 import os 
+# import streamlit as st
 import pandas as pd
 from llama_index.core.query_engine import PandasQueryEngine 
-from prompts import new_prompt, instruction_str, context
-from note_engine import note_engine
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
 from llama_index.core.agent import ReActAgent
 from llama_index.llms.openai import OpenAI
+from prompts import new_prompt, instruction_str, context
+from note_engine import note_engine
+from pdf import malaysia_engine
 load_dotenv()
 
 population_path = os.path.join("data", "population.csv")
@@ -24,6 +26,14 @@ tools = [
         metadata=ToolMetadata(
             name="population_query_engine",
             description="This gives information at the world population and demographic",
+        ),
+    ),
+
+    QueryEngineTool(
+        query_engine=malaysia_engine,
+        metadata=ToolMetadata(
+            name="malaysia_data",
+            description="This gives details information about Malaysia country",
         ),
     ),
 ]
