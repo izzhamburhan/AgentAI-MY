@@ -1,0 +1,4 @@
+.env
+/ai
+/.ipynb_checkpoints
+__pycache__/
