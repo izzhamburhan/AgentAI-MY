@@ -4,6 +4,7 @@ AgentAI is a conversational agent built using the ReAct framework and OpenAI's G
 
 - Receive PDF file
 - User can ask anything (knowledge system based on the files given)
+- User can instruct the system to write notes 
 
 ## Process
 1. Thinking Process
