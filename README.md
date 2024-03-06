@@ -1,6 +1,6 @@
 # AgentAI - MY
 
-AgentAI is a conversational agent built using the ReAct framework and OpenAI's GPT-3.5 model. It assists users by providing information about world population statistics and details about Malaysia.
+AgentAI is a conversational agent built using the ReAct framework and OpenAI's GPT-3.5 model. It assists users by providing information about world population statistics and details about Malaysia. This is also to train RAG for my practises.
 
 ## Installation
 
