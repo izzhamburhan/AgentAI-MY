@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os 
-# import streamlit as st
+import streamlit as st
 import pandas as pd
 from llama_index.core.query_engine import PandasQueryEngine 
 from llama_index.core.tools import QueryEngineTool, ToolMetadata
@@ -28,7 +28,6 @@ tools = [
             description="This gives information at the world population and demographic",
         ),
     ),
-
     QueryEngineTool(
         query_engine=malaysia_engine,
         metadata=ToolMetadata(
@@ -42,6 +41,17 @@ tools = [
 llm = OpenAI(model="gpt-3.5-turbo-0613")
 agent = ReActAgent.from_tools(tools, llm=llm, verbose=True, context=context)
 
-while (prompt := input("Enter a prompt (q to quit): ")) != "q":
-    result = agent.query(prompt)
-    print(result)
+# while (prompt := input("Enter a prompt (q to quit): ")) != "q":
+#     result = agent.query(prompt)
+#     print(result)
+
+st.title("AgentAI - RAG")
+
+user_input = st.text_input("Enter a prompt:")
+if user_input:
+    if user_input.lower() == 'q':
+        st.stop()
+    else:
+        result = agent.query(user_input)
+        st.text_area("Response:", value=result, height=100, disabled=False)
+    
